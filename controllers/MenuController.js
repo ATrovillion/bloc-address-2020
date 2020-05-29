@@ -7,7 +7,7 @@ module.exports = class MenuController {
         type: 'list',
         name: 'mainMenuChoice',
         message: 'Please choose from an option below: ',
-        choices: ['Add new contact', 'Exit'],
+        choices: ['Add new contact', 'Get the current date and time', 'Exit'],
       },
     ];
     this.contacts = [];
@@ -24,6 +24,10 @@ module.exports = class MenuController {
             break;
           case 'Exit':
             this.exit();
+            break;
+          case 'Get the current date and time':
+            this.getDate();
+            break;
           default:
             console.log('Invalid input');
             this.main();
@@ -34,6 +38,7 @@ module.exports = class MenuController {
       });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   clear() {
     console.log('\x1Bc');
   }
@@ -44,6 +49,14 @@ module.exports = class MenuController {
     this.main();
   }
 
+  getDate() {
+    // Logs the current time and date to the console
+    this.clear();
+    console.log(new Date());
+    this.main();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
   exit() {
     console.log('Thanks for using AddressBloc!');
     process.exit();

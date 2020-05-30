@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/ATrovillion/bloc-address-2020#readme",
   "dependencies": {
-    "inquirer": "^7.1.0"
+    "inquirer": "^7.1.0",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.11"
   },
   "devDependencies": {
     "jasmine": "^3.5.0"

@@ -43,6 +43,7 @@ module.exports = class ContactController {
     return Contact.findAll();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   iterativeSearch(contacts, target) {
     for (const contact of contacts) {
       if (contact.name.toLowerCase() === target.toLowerCase()) {
@@ -50,5 +51,34 @@ module.exports = class ContactController {
       }
     }
     return null;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  binarySearch(contacts, target) {
+    let min = 0;
+    let max = contacts.length - 1;
+    let mid;
+
+    while (min <= max) {
+      mid = Math.floor((min + max) / 2);
+      const currentContact = contacts[mid];
+
+      if (currentContact.name > target) {
+        max = mid - 1;
+      } else if (currentContact.name < target) {
+        min = mid + 1;
+      } else {
+        return contacts[mid];
+      }
+    }
+
+    return null;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  search(name) {
+    return Contact.findOne({
+      where: { name },
+    });
   }
 };

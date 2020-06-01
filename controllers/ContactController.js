@@ -22,11 +22,19 @@ module.exports = class ContactController {
           return val !== '';
         },
       },
+      {
+        type: 'input',
+        name: 'email',
+        message: "Contact's email address - ",
+        validate(val) {
+          return val !== '';
+        },
+      },
     ];
   }
 
   // eslint-disable-next-line class-methods-use-this
-  addContact(name, phone) {
-    return Contact.create({ name, phone });
+  addContact(name, phone, email) {
+    return Contact.create({ name, phone, email });
   }
 };

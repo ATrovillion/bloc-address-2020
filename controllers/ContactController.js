@@ -40,6 +40,21 @@ module.exports = class ContactController {
         },
       },
     ];
+    this.showContactQuestions = [
+      {
+        type: 'list',
+        name: 'selected',
+        message: 'Please choose from an option below: ',
+        choices: ['Delete contact', 'Main menu'],
+      },
+    ];
+    this.deleteConfirmQuestions = [
+      {
+        type: 'confirm',
+        name: 'confirmation',
+        message: 'are you sure you want to delete this contact?',
+      },
+    ];
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -83,6 +98,13 @@ module.exports = class ContactController {
     }
 
     return null;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  delete(id) {
+    return Contact.destroy({
+      where: { id },
+    });
   }
 
   // eslint-disable-next-line class-methods-use-this
